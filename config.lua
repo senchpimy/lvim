@@ -1,6 +1,9 @@
 vim.keymap.set("n", "nh", ":HopWord<CR>")
-vim.keymap.set("n", "<silent><TAB>", ":BufferLineCycleNext<CR>")
-vim.keymap.set("n", "<silent><S-TAB>", ":BufferLineCyclePrev<CR>")
+vim.keymap.set("n", "<TAB>", ":BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
+vim.keymap.set("n", "<C-c>", ":BufferLinePickClose<CR>")
+
+vim.wo.relativenumber = true
 
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = false
@@ -45,5 +48,20 @@ lvim.plugins = {
   {"lambdalisue/suda.vim"},
   {"farmergreg/vim-lastplace"},
   {"akinsho/bufferline.nvim"},
+  {
+  "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "css", "scss", "html", "javascript","json","lua" }, {
+          RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
+          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          })
+  end,
+  },
+
 }
 
